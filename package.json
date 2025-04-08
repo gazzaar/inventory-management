@@ -1,0 +1,27 @@
+{
+  "name": "inventory-management",
+  "version": "1.0.0",
+  "description": "Inventory applicaiton using nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --watch ./src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gazzaar/inventory-management.git"
+  },
+  "keywords": [],
+  "author": "gazzaar",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/gazzaar/inventory-management/issues"
+  },
+  "homepage": "https://github.com/gazzaar/inventory-management#readme",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "pg": "^8.14.1"
+  }
+}
