@@ -18,27 +18,15 @@ CREATE TABLE IF NOT EXISTS categories (
 CREATE TABLE IF NOT EXISTS products (
     product_id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     product_name VARCHAR(255) NOT NULL,
-    price NUMERIC(10, 2),  -- Changed to NUMERIC for decimal prices
-    quantity INTEGER CHECK (quantity >= 0),  -- Added CHECK constraint
-    product_image TEXT,  -- Changed to TEXT for image URLs
-    category_id INTEGER NOT NULL,  -- Foreign key column
+    price NUMERIC(10, 2),  
+    quantity INTEGER CHECK (quantity >= 0),  
+    product_image BYTEA,  
+    category_id INTEGER NOT NULL,  
     CONSTRAINT fk_category
         FOREIGN KEY (category_id) 
         REFERENCES categories(category_id)
         ON DELETE RESTRICT  -- Prevents deleting categories with products
 );
-
-
---
-INSERT INTO categories (category_name, description) 
-VALUES 
-    ('Electronics', 'Gadgets and devices'),
-    ('Clothing', 'Wearable items');
-
-INSERT INTO products (product_name, price, quantity, product_image, category_id)
-VALUES 
-    ('Laptop', 999.99, 10, 'https://via.placeholder.com/100', 1),
-    ('T-Shirt', 19.99, 50, 'https://via.placeholder.com/100', 2);
 
 `;
 
