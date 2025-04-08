@@ -1,7 +1,7 @@
 #! /usr/bin/env node
+import dotenv from 'dotenv';
 import pkg from 'pg';
 const { Client } = pkg;
-import dotenv from 'dotenv';
 dotenv.config();
 
 const DbUser = process.env.DB_NAME;
@@ -20,13 +20,24 @@ CREATE TABLE IF NOT EXISTS products (
     product_name VARCHAR(255) NOT NULL,
     price NUMERIC(10, 2),  
     quantity INTEGER CHECK (quantity >= 0),  
-    product_image BYTEA,  
+    product_image TEXT,  
     category_id INTEGER NOT NULL,  
     CONSTRAINT fk_category
         FOREIGN KEY (category_id) 
         REFERENCES categories(category_id)
         ON DELETE RESTRICT  -- Prevents deleting categories with products
 );
+
+-------- 
+INSERT INTO categories (category_name, description) 
+VALUES 
+    ('Electronics', 'Gadgets and devices'),
+    ('Clothing', 'Wearable items');
+
+INSERT INTO products (product_name, price, quantity, product_image, category_id)
+VALUES 
+    ('Laptop', 999.99, 10, 'image-link', 1),
+    ('T-Shirt', 19.99, 50, 'image-link', 2);
 
 `;
 
