@@ -2,8 +2,7 @@ import { getAllProducts } from '../models/queries.js';
 
 async function getProducts(req, res) {
   const products = await getAllProducts();
-  res.send(products);
-  res.end();
+  res.render('products', { products: products });
 }
 
 export default { getProducts };
