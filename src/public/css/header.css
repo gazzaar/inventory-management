@@ -1,0 +1,37 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4rem;
+}
+.heading-primary {
+  font-size: 2.4rem;
+}
+
+.nav {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav__link:visited,
+.nav__link:link {
+  display: block;
+  text-decoration: none;
+  font-size: 1.8rem;
+  color: #333;
+  border: 1px solid #333;
+  padding: 0.8rem 1.6rem;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.nav__link:active,
+.nav__link:hover {
+  font-size: 1.8rem;
+  color: #474646;
+  background-color: #333;
+  color: #eee;
+}
