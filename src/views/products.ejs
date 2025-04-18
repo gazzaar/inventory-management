@@ -4,20 +4,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Inventory management</title>
+    <link rel="stylesheet" href="/css/product.css" />
   </head>
   <body>
     <%- include('header.ejs') %>
-    <ul>
-      <% products.forEach(product => { %>
-      <li>
-        <%= product.product_name %> - Price: $<%= product.price %> - Quantity:
-        <%= product.quantity %>
-        <img
-          src="<%= product.product_image %>"
-          alt="<%= product.product_name %>"
-        />
-      </li>
-      <% }); %>
-    </ul>
+    <main>
+      <button class="btn">Add product</button>
+      <div class="products-container">
+        <% products.forEach(product => { %>
+        <div class="product">
+          <div class="product-image-container">
+            <img
+              src="<%= product.product_image %>"
+              alt="<%= product.product_name %>"
+              class="product-image"
+            />
+          </div>
+          <div class="product-text">
+            <h2 class="product-name"><%= product.product_name %></h2>
+
+            <p class="product-price">$<%= product.price %></p>
+            <p class="product-category"><%= product.category_name %></p>
+            <p class="product-quantity">quantity: <%= product.quantity %></p>
+          </div>
+        </div>
+
+        <% }); %>
+      </div>
+    </main>
   </body>
 </html>
