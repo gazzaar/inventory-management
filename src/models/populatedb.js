@@ -29,6 +29,26 @@ CREATE TABLE IF NOT EXISTS products (
         ON DELETE RESTRICT  -- Prevents deleting categories with products
 );
 
+CREATE OR REPLACE FUNCTION get_or_create_category(p_category_name VARCHAR) 
+RETURNS INTEGER AS $$
+DECLARE
+    v_category_id INTEGER;
+BEGIN
+    -- Try to find existing category
+    SELECT category_id INTO v_category_id
+    FROM categories
+    WHERE LOWER(category_name) = LOWER(p_category_name);
+    
+    -- If category doesn't exist, create it
+    IF v_category_id IS NULL THEN
+        INSERT INTO categories (category_name)
+        VALUES (p_category_name)
+        RETURNING category_id INTO v_category_id;
+    END IF;
+    
+    RETURN v_category_id;
+END;
+$$ LANGUAGE plpgsql;
 -------- 
 -- Insert into categories table
 INSERT INTO categories (category_name, description,category_image) 
