@@ -20,18 +20,15 @@
   display: block;
   text-decoration: none;
   font-size: 1.8rem;
-  color: #333;
-  border: 1px solid #333;
+  color: #f1f5fd;
   padding: 0.8rem 1.6rem;
   border-radius: 4px;
   font-weight: 500;
+  background-color: #6182db;
   transition: all 0.3s;
 }
 
 .nav__link:active,
 .nav__link:hover {
-  font-size: 1.8rem;
-  color: #474646;
-  background-color: #333;
-  color: #eee;
+  background-color: #445fcc;
 }

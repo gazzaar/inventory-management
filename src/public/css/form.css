@@ -20,7 +20,43 @@
   position: relative;
 }
 
-form div {
+form div:not(:last-child) {
   display: flex;
   flex-direction: column;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+input {
+  padding: 8px 16px;
+  border-radius: 5px;
+  border: 2px solid #c9d7f4;
+  font-size: 16px;
+  transition: all 0.2s;
+}
+
+input:focus {
+  outline: none;
+
+  border: 2px solid #445fcc;
+}
+
+label {
+  font-size: 18px;
+  color: #20254b;
+}
+
+.btns-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+#add-new,
+#close-form {
+  display: inline;
+  min-width: 120px;
+  margin: 0;
 }
