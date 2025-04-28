@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Inventory Management</title>
     <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/form.css" />
     <link rel="stylesheet" href="/css/categories.css" />
   </head>
   <body>
     <%- include('header.ejs') %>
     <main>
-      <button class="btn">Add category</button>
+      <button class="btn" id="add-category">Add category</button>
 
       <div class="categories-container">
         <% categories.forEach(category => { %>
@@ -30,5 +31,62 @@
         <% }); %>
       </div>
     </main>
+
+    <div id="form-container">
+      <form action="/categories/create" method="POST">
+        <div>
+          <label for="category-name">Category Name</label>
+          <input
+            type="text"
+            name="category_name"
+            required
+            id="category-name"
+            placeholder="Smart phones"
+          />
+        </div>
+
+        <div>
+          <label for="category-description">Description</label>
+          <input
+            type="text"
+            name="description"
+            required
+            id="category-description"
+            placeholder="Your fav smart phones!"
+          />
+        </div>
+        <div>
+          <label for="category-image">Category Image</label>
+          <input
+            type="text"
+            name="category_image"
+            id="category-image"
+            required
+            placeholder="Insert Image link"
+          />
+        </div>
+        <div class="btns-container">
+          <button type="submit" class="btn" id="add-new">Add Category</button>
+          <button class="btn" id="close-form" type="button">Cancel</button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      const addCategoryBtn = document.getElementById('add-category');
+      const submitForm = document.getElementById('add-new');
+      const closeFormBtn = document.getElementById('close-form');
+      function openForm() {
+        document.getElementById('form-container').style.display = 'flex';
+      }
+
+      function closeForm() {
+        document.getElementById('form-container').style.display = 'none';
+      }
+
+      addCategoryBtn.addEventListener('click', openForm);
+      submitForm.addEventListener('submit', closeForm);
+      closeFormBtn.addEventListener('click', closeForm);
+    </script>
   </body>
 </html>

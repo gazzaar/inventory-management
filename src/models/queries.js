@@ -47,4 +47,20 @@ const addProduct = async function (
     [product_name, price, quantity, product_image, categoryId]
   );
 };
-export { addProduct, getAllCategories, getAllProducts };
+
+async function addNewCategory(name, description, image) {
+  try {
+    let categoryExist = await pool.query(
+      'SELECT category_id FROM categories WHERE LOWER(category_name) = LOWER($1)',
+      [name]
+    );
+    if (categoryExist.rows.length > 0) return 'Category Already Exists';
+    await pool.query(
+      'INSERT INTO categories (category_name,description,category_image) VALUES($1,$2,$3)',
+      [name, description, image]
+    );
+  } catch (err) {
+    console.log(err);
+  }
+}
+export { addNewCategory, addProduct, getAllCategories, getAllProducts };
