@@ -5,4 +5,4 @@ async function getCategories(req, res) {
   res.render('categories', { categories: categories });
 }
 
-export default { getCategories };
+export default getCategories;
